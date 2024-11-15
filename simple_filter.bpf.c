@@ -36,9 +36,13 @@ int drop_icmp(struct xdp_md *xdp)
 	if (ip->protocol != IPPROTO_ICMP)
 		return XDP_PASS;
 
+	char fmt[] = "Dropping ICMP packet !";
+	bpf_trace_printk(fmt, sizeof(fmt));
 	count = bpf_map_lookup_elem(&drop_count, &key);
 	if (count)
 		*count+=1;
 
 	return XDP_DROP;
 }
+
+char __license[] SEC("license") = "GPL";

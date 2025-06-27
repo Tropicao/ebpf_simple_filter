@@ -6,10 +6,10 @@
 #include <bpf/bpf_helpers.h>
 
 struct {
-        __uint(type, BPF_MAP_TYPE_ARRAY);
-        __type(key, int);
-        __type(value, int);
-        __uint(max_entries, 1);
+	__uint(type, BPF_MAP_TYPE_ARRAY);
+	__type(key, int);
+	__type(value, int);
+	__uint(max_entries, 1);
 } drop_count SEC(".maps");
 
 SEC("xdp")

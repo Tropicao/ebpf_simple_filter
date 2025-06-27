@@ -1,0 +1,3 @@
+simple_filter
+*.o
+*.skel.h
